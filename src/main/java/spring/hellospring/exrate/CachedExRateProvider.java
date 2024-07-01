@@ -1,10 +1,12 @@
-package spring.hellospring;
+package spring.hellospring.exrate;
+
+import spring.hellospring.payment.ExRateProvider;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class CachedExRateProvider implements ExRateProvider{
+public class CachedExRateProvider implements ExRateProvider {
     private final ExRateProvider target;
 
     private BigDecimal cashedExRate;

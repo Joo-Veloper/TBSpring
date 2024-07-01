@@ -2,7 +2,8 @@ package spring.hellospring;
 
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.core.annotation.Order;
+import spring.hellospring.payment.Payment;
+import spring.hellospring.payment.PaymentService;
 
 import java.io.IOException;
 import java.math.BigDecimal;
