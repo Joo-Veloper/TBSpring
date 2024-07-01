@@ -1,9 +1,11 @@
 package spring.hellospring;
 
+import org.springframework.stereotype.Component;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-
+@Component // 빈 오브젝트 대상 -> 이렇게 붙어있는 애노테이션은 프로그램이 실행되는 시점에서 애노테이션 정보를 데이터처럼 읽어옴
 public class PaymentService {
     private final ExRateProvider exRateProvider;
 
