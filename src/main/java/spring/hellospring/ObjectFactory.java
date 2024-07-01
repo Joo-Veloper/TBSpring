@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan
 public class ObjectFactory {
-    /*@Bean
+   /* @Bean
     public PaymentService paymentService() {
         return new PaymentService(exRateProvider());
     }
