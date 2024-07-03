@@ -1,28 +1,29 @@
 package spring.hellospring.payment;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import spring.hellospring.ObjectFactory;
-import spring.hellospring.TestObjectFactory;
+import spring.hellospring.TestPaymentConfig;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.Clock;
+import java.time.LocalDateTime;
 
 import static java.math.BigDecimal.TEN;
 import static java.math.BigDecimal.valueOf;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = TestObjectFactory.class) // 컨테이너 테스트
+@ContextConfiguration(classes = TestPaymentConfig.class) // 컨테이너 테스트
 class PaymentServiceSpringTest {
     @Autowired
     PaymentService paymentService; // wired 의존관계 주입하는걸 스프링에서 wired라고 하며 자동으로 해달라고 할때 autowired 사용!
-
+    @Autowired
+    Clock clock;
     @Autowired
     ExRateProviderStub exRateProviderStub;
 
@@ -46,4 +47,16 @@ class PaymentServiceSpringTest {
        /* assertThat(payment.getValidUntil()).isAfter(LocalDateTime.now());
         assertThat(payment.getValidUntil()).isBefore(LocalDateTime.now().plusMinutes(30));*/
     }
+    @Test
+    void validUntil() throws IOException{
+        Payment payment = paymentService.prepare(1L, "USD", TEN);
+
+        //valid until이 prepare() 30분 뒤로 설정 되었는가?
+        LocalDateTime now = LocalDateTime.now(this.clock);
+        LocalDateTime expectedValidUntil = now.plusMinutes(30);
+
+
+        Assertions.assertThat(payment.getValidUntil()).isEqualTo(expectedValidUntil);
+    }
+
 }
