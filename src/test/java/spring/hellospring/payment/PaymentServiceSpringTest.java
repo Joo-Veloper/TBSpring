@@ -28,7 +28,7 @@ class PaymentServiceSpringTest {
     ExRateProviderStub exRateProviderStub;
 
     @Test
-    void convertedAmount() throws IOException {
+    void convertedAmount() {
         // exRate:1000
         Payment payment = paymentService.prepare(1L, "USD", TEN);
         assertThat(payment.getExRate()).isEqualByComparingTo(valueOf(1_000));
@@ -48,7 +48,7 @@ class PaymentServiceSpringTest {
         assertThat(payment.getValidUntil()).isBefore(LocalDateTime.now().plusMinutes(30));*/
     }
     @Test
-    void validUntil() throws IOException{
+    void validUntil() {
         Payment payment = paymentService.prepare(1L, "USD", TEN);
 
         //valid until이 prepare() 30분 뒤로 설정 되었는가?
