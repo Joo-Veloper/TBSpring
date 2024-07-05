@@ -3,6 +3,7 @@ package spring.hellospring.exrate;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;
+import spring.hellospring.api.SimpleApiExecutor;
 import spring.hellospring.payment.ExRateProvider;
 
 
@@ -34,7 +35,7 @@ public class WebApiExRateProvider implements ExRateProvider {
 
         String response;
         try {
-            response = executeApi(uri);
+            response = new SimpleApiExecutor().execute(uri);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -53,12 +54,4 @@ public class WebApiExRateProvider implements ExRateProvider {
         return data.rates().get("KRW");
     }
 
-    private String executeApi(URI uri) throws IOException {
-        String response;
-        HttpURLConnection connection = (HttpURLConnection) uri.toURL().openConnection();
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
-            response = br.lines().collect(Collectors.joining());
-        }
-        return response;
-    }
 }
