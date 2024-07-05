@@ -2,6 +2,9 @@ package spring.hellospring;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import spring.hellospring.api.ApiTemplate;
+import spring.hellospring.api.ErApiExRateExtractor;
+import spring.hellospring.api.SimpleApiExecutor;
 import spring.hellospring.payment.ExRateProvider;
 import spring.hellospring.exrate.WebApiExRateProvider;
 import spring.hellospring.payment.PaymentService;
@@ -17,8 +20,13 @@ public class PaymentConfig {
     }
 
     @Bean
+    public ApiTemplate apiTemplate() {
+        return new ApiTemplate(new SimpleApiExecutor(), new ErApiExRateExtractor());
+    }
+
+    @Bean
     public ExRateProvider exRateProvider() {
-        return new WebApiExRateProvider();
+        return new WebApiExRateProvider(apiTemplate());
     }
 
     @Bean
