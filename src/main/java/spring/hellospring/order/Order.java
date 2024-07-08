@@ -4,14 +4,10 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
-@Entity
-@Table(name = "orders")
+
 public class Order {
-    @Id
-    @GeneratedValue
     private Long id;
 
-    @Column(unique = true) //중복값 x
     private String no;
 
     private BigDecimal total;
