@@ -2,10 +2,6 @@ package spring.hellospring;
 
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.transaction.support.TransactionTemplate;
-import spring.hellospring.data.OrderRepository;
 import spring.hellospring.order.Order;
 import spring.hellospring.order.OrderService;
 
