@@ -313,7 +313,6 @@ HTTP 요청/응답 처리: GET, POST, PUT, DELETE 등 다양한 HTTP 메소드�
 Rest 템플릿은 우리가 되게 단순하게 만들었던 API 템플릿의 고급버전
 HTTP의 모든 기능을 다 사용해서 API를 호출하는 굉장히 다양한 포맷을 다 지원하는 그런 기술을 가진 템플릿
 
-
 ### ClientHttpRequestFactory
 HTTP Client 기술을 사용해서 ClientHttpRequest를 생성하는 전략
 - ClientHttpRequestFactory는 HTTP 클라이언트 기술을 사용하여 ClientHttpRequest 객체를 생성하는 전략을 정의하는 인터페이스입니다. 이 인터페이스는 다양한 HTTP 클라이언트 구현체들이 실제로 HTTP 요청을 만들어내는 방식을 추상화하여 제공합니다
