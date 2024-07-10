@@ -37,8 +37,8 @@ public class PaymentConfig {
     }
 
     /*@Bean
-    public OrderService orderService() {
-        return new OrderService(exRateProvider());
+    public OrderServiceImpl orderService() {
+        return new OrderServiceImpl(exRateProvider());
     }
 
     @Bean
@@ -47,10 +47,10 @@ public class PaymentConfig {
     }*/
 }
 /*
-class OrderService{
+class OrderServiceImpl{
     ExRateProvider exRateProvider;
 
-    public OrderService(ExRateProvider exRateProvider) {
+    public OrderServiceImpl(ExRateProvider exRateProvider) {
         this.exRateProvider = exRateProvider;
     }
 }*/
